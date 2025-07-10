@@ -1,0 +1,188 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daood & Saima's Nest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-screen" id="loginScreen">
+    <h1>Welcome to Daood & Saima's Nest 💖</h1>
+    <p>A private space just for the two of you</p>
+    <input type="password" id="passwordInput" placeholder="Enter your secret password" />
+    <button onclick="enterNest()">Enter Nest</button>
+  </div>
+
+  <div class="dashboard hidden" id="dashboard">
+    <h2>🏡 Home Dashboard</h2>
+    <div class="rooms">
+      <button onclick="enterRoom('lounge')">💬 Lounge Room</button>
+      <button onclick="enterRoom('photo')">📸 Photo Wall</button>
+    </div>
+    <div id="roomContent" class="room-content">
+      <p>Select a room to begin exploring your nest 💕</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+  color: #333;
+  text-align: center;
+  padding: 2rem;
+}
+
+h1, h2 {
+  font-family: 'Sacramento', cursive;
+  color: #ff69b4;
+}
+
+.login-screen {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input {
+  padding: 0.75rem;
+  width: 80%;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff1493;
+}
+
+.hidden {
+  display: none;
+}
+
+.rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.room-content {
+  margin-top: 2rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Lounge Room */
+.chat-box {
+  height: 200px;
+  overflow-y: auto;
+  background: #fff0f5;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: left;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+#chatInput {
+  width: 70%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.emoji-buttons {
+  margin-top: 1rem;
+}
+
+.emoji-buttons button {
+  margin: 0 0.5rem;
+  background-color: #ffb6c1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.music-player {
+  margin-top: 2rem;
+}
+
+/* Photo Wall */
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.photo-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 150px;
+  text-align: center;
+}
+
+.photo-item img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.memory-of-day {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff0f5;
+  border-radius: 10px;
+  min-height: 100px;
+}
+
+.memory-of-day img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 10px;
+}
+javascript function enterNest() { const password = document.getElementById('passwordInput').value; if (password === 'iloveyou') { document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('dashboard').classList.remove('hidden'); } else { alert('Oops! Wrong password. Try again 💔'); } }
+
+function enterRoom(roomName) { const roomContent = document.getElementById('roomContent'); switch (roomName) { case 'lounge': roomContent.innerHTML = <h3>💬 Lounge Room</h3> <div class="chat-box" id="chatBox"></div> <input type="text" id="chatInput" placeholder="Type a message..." /> <button onclick="sendMessage()">Send</button> <div class="emoji-buttons"> <button onclick="sendEmoji('🤗')">Send Hug</button> <button onclick="sendEmoji('💋')">Send Kiss</button> </div> <div class="music-player"> <h4>🎵 Shared Music</h4> <iframe width="100%" height="80" src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=0" frameborder="0" allowfullscreen></iframe> </div>; break;
+
+case 'photo': roomContent.innerHTML = <h3>📸 Photo Wall</h3> <input type="file" id="photoInput" accept="image/*" /> <input type="text" id="captionInput" placeholder="Add a sweet caption..." /> <button onclick="addPhoto()">Upload</button> <div id="photoGallery" class="photo-gallery"></div> <hr /> <h4>💖 Memory of the Day</h4> <div id="memoryOfDay" class="memory-of-day">Click below to reveal a memory!</div> <button onclick="showRandomMemory()">Show Memory</button>; break;
+
+default: roomContent.innerHTML = "<p>Select a room to begin exploring your nest 💕</p>"; } }
+
+function sendMessage() { const input = document.getElementById('chatInput'); const chatBox = document.getElementById('chatBox'); if (input.value.trim() !== '') { const msg = document.createElement('p'); msg.textContent = 💬 You: ${input.value}; chatBox.appendChild(msg); input.value = ''; chatBox.scrollTop = chatBox.scrollHeight; } }
+
+function sendEmoji(emoji) { const chatBox = document.getElementById('chatBox'); const msg = document.createElement('p'); msg.textContent = ${emoji} Sent with love; chatBox.appendChild(msg); chatBox.scrollTop = chatBox.scrollHeight; }
+
+let photoMemories = [];
+
+function addPhoto() { const fileInput = document.getElementById('photoInput'); const caption = document.getElementById('captionInput').value; const gallery = document.getElementById('photoGallery');
+
+if (fileInput.files.length === 0) return alert("Please select a photo!");
+
+const reader = new FileReader(); reader.onload = function (e) { const photoDiv = document.createElement('div'); photoDiv.classList.add('photo-item'); photoDiv.innerHTML = <img src="${e.target.result}" alt="Memory" /> <p>${caption}</p>; gallery.appendChild(photoDiv); photoMemories.push({ src: e.target.result, caption }); fileInput.value = ''; document.getElementById('captionInput
