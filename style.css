@@ -1,0 +1,15 @@
+ body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom right, #ffe4e1, #fff0f5);
+  color: #333;
+  text-align: center;
+  padding: 2rem;
+}
+
+h1, h2 {
+  font-family: 'Sacramento', cursive;
+  color: #ff69b4;
+}
+
+/* More styles like login screen, buttons, rooms go here */
